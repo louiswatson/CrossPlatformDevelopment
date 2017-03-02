@@ -1,0 +1,65 @@
+body{
+	background: green;
+	font-family: 'Pacifico', cursive;
+	margin: 0;
+}
+h1	{
+	font-size: 7.0em;
+	color: white;
+	text-align: center;
+}
+
+h2 {
+	font-size: 3.5em;
+	color:white;
+	text-align: center;
+	font-family: 'Oswald', cursive;
+	margin-bottom: 130px;
+}
+
+.difficulty{
+	font-size: 2.5em;
+	text-align: center;
+	font-family: 'Oswald', cursive;
+	padding: 20px 0px;
+	margin:20px 0px;
+	background-color: #F5DEB3;
+}
+
+#golfball{
+	margin-top: 230px;
+	margin-left: 50px;
+	height: 450px;
+	overflow: hidden;
+	position: relative;
+}
+
+#golfballtext{
+	font-size: 4em;
+	position: absolute;
+	top:200px;
+	left: 450px;
+	background: white;
+	padding: 10px;
+	display: none;
+}
+
+#backButton{
+	margin-top: 1050px;
+	margin-left: 15px;
+
+}
+
+#easy{
+	color: green;
+	
+}
+
+#medium{
+	color: orange;
+
+}
+
+#hard{
+	color: red;
+}
