@@ -18,11 +18,11 @@ h2 {
 }
 
 .difficulty{
-	font-size: 2.5em;
+	font-size: 1.0em;
 	text-align: center;
 	font-family: 'Oswald', cursive;
 	padding: 20px 0px;
-	margin:20px 0px;
+	margin:10px 0px;
 	background-color: #F5DEB3;
 }
 
@@ -45,7 +45,7 @@ h2 {
 }
 
 #backButton{
-	margin-top: 500px;
+	margin-top: 200px;
 	margin-left: 15px;
 
 }
