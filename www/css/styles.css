@@ -5,7 +5,7 @@ body{
 	overflow: hidden;
 }
 h1	{
-	font-size: 100%;
+	font-size: 3.5em;
 	color: white;
 	text-align: center;
 }
@@ -28,9 +28,7 @@ h2 {
 }
 
 #golfball{
-	margin-top: 230px;
-	margin-left: 50px;
-	height: 450px;
+	height: 25em;
 	overflow: hidden;
 	position: absolute;
 	bottom: 0;
