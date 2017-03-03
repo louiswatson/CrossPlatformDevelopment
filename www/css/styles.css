@@ -11,34 +11,34 @@ h1	{
 }
 
 h2 {
-	font-size: 3.5em;
+	font-size: 2em;
 	color:white;
 	text-align: center;
 	font-family: 'Oswald', cursive;
-	margin-bottom: 130px;
+	margin-bottom: 1em;
 }
 
 .difficulty{
-	font-size: 2.5em;
+	font-size: 1.5em;
 	text-align: center;
 	font-family: 'Oswald', cursive;
-	padding: 20px 0px;
-	margin:20px 0px;
+	padding: 0.4em 0px;
+	margin:0.5em 0px;
 	background-color: #F5DEB3;
 }
 
 #golfball{
-	height: 25em;
+	height: 10em;
 	overflow: hidden;
 	position: absolute;
 	bottom: 0;
 }
 
 #golfballtext{
-	font-size: 4em;
+	font-size: 1.5em;
 	position: absolute;
-	top:200px;
-	left: 450px;
+	top:2.5em;
+	left: 8.5em;
 	background: white;
 	padding: 10px;
 	display: none;
