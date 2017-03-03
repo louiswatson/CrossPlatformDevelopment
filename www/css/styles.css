@@ -27,9 +27,9 @@ h2 {
 }
 
 #golfball{
-	margin-top: 230px;
+	margin-top: 50px;
 	margin-left: 50px;
-	height: 200px;
+	height: 100px;
 	overflow: hidden;
 	position: relative;
 }
