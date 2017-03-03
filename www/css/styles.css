@@ -14,15 +14,15 @@ h2 {
 	color:white;
 	text-align: center;
 	font-family: 'Oswald', cursive;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
 .difficulty{
 	font-size: 1.0em;
 	text-align: center;
 	font-family: 'Oswald', cursive;
-	padding: 20px 0px;
-	margin:10px 0px;
+	padding: 10px 0px;
+	margin:5px 0px;
 	background-color: #F5DEB3;
 }
 
