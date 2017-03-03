@@ -29,13 +29,13 @@ h2 {
 #golfball{
 	margin-top: 230px;
 	margin-left: 50px;
-	height: 450px;
+	height: 200px;
 	overflow: hidden;
 	position: relative;
 }
 
 #golfballtext{
-	font-size: 4em;
+	font-size: 2em;
 	position: absolute;
 	top:200px;
 	left: 450px;
@@ -45,7 +45,7 @@ h2 {
 }
 
 #backButton{
-	margin-top: 1050px;
+	margin-top: 500px;
 	margin-left: 15px;
 
 }
