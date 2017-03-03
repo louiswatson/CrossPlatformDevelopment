@@ -8,10 +8,10 @@
     <!-- versionCode is optional and Android only -->
     <name>Pub Golf App</name>
     <description>
-        Example of a hybrid geolaction app.
+        Pub Golf Application 
     </description> 
     <author href="website" email="your email">
-        Wayne Christian
+        Louis Watson
     </author>
 	<!--
       This allows your app to load assets from all *.phongap.com domains
