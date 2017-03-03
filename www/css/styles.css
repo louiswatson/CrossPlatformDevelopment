@@ -14,7 +14,7 @@ h2 {
 	color:white;
 	text-align: center;
 	font-family: 'Oswald', cursive;
-	margin-bottom: 130px;
+	margin-bottom: 50px;
 }
 
 .difficulty{
@@ -37,10 +37,10 @@ h2 {
 #golfballtext{
 	font-size: 2em;
 	position: absolute;
-	top:200px;
-	left: 450px;
+	top:100px;
+	left: 250px;
 	background: white;
-	padding: 10px;
+	padding: 5px;
 	display: none;
 }
 
