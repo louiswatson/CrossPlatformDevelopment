@@ -77,7 +77,10 @@ $(document).ready(function() {
 		$(':mobile-pagecontainer').pagecontainer('change', '#p1',{
 			transition:'slidedown',
 			changeHash:false
+
 		});
+
+		$(".pubTitles").remove();
 	});
 
 }); 
