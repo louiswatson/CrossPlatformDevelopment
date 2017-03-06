@@ -49,19 +49,32 @@ $(document).ready(function() {
 			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
 			success: function(data){
 				console.log(data);
+				
 				map = new google.maps.Map(document.getElementById('map'), {
-		zoom: 17,
-		center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
-	});
+					zoom: 17,
+					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
+				});
+
+				var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+				
+				var marker = new google.maps.Marker({
+			    	position: myLatLng,
+			    	map: map,
+			    	title: 'Hello World!'
+			    });
+
+				marker.setMap(map);
 			}
- 
-})
+
 	});
+
 	$("#backButton").click(function(){
 		$(':mobile-pagecontainer').pagecontainer('change', '#p1',{
 			transition:'slidedown',
 			changeHash:false
 		});
 	});
+
+}); 
 
 });
