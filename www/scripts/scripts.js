@@ -68,7 +68,7 @@ $(document).ready(function() {
 					marker.setMap(map);
 
 					$.each(data.results, function(key, value) {
-						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+"</div>");
+						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <div place_id='"+value.place_id+ "' class='pubAttr'>test</div></div>");
 						return key<3;
 					})
 				}
@@ -89,7 +89,26 @@ $(document).ready(function() {
 
 	}); 
 
-	$(document).on('click', '.pubTitles', function() { console.log(this);
-		$(this).next().slideToggle(); });
+	$(document).on('click', '.pubTitles', function() {
 
+		var $info = $(this).next();
+	
+		$('.pubInfo').slideUp();
+		// $('.pubInfo').removeClass("open");
+
+		// $info.addClass("open");
+
+		if($info.hasClass("open")) {
+			$('.pubInfo').slideUp();
+			$('.pubInfo').removeClass("open");
+		} else {
+			$('.pubInfo').removeClass("open");
+			$info.addClass("open");
+			$info.slideDown();
+		}
+	});
+
+	$(document).on('click', '.pubAttr', function() { 
+		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
+	});
 });
