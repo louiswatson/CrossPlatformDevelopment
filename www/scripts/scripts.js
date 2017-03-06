@@ -28,6 +28,7 @@ $(document).ready(function() {
 
 	
 
+
 	$(".difficulty").click(function() {
 		console.log("again");
 		
@@ -42,47 +43,53 @@ $(document).ready(function() {
 				changeHash:false
 			});
 
-		$.ajax({
-			type: "GET",
-			crossDomain :true,
-			dataType :"json",
-			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
-			success: function(data){
-				console.log(data);
-				
-				map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 17,
-					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
-				});
+		$(".pubTitles").remove();
+			$.ajax({
+				type: "GET",
+				crossDomain :true,
+				dataType :"json",
+				url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
+				success: function(data){
+					console.log(data);
+					
+					map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 12,
+						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
+					});
 
-				var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
-				
-				var marker = new google.maps.Marker({
-			    	position: myLatLng,
-			    	map: map,
-			    	title: 'Hello World!'
-			    });
+					var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+					
+					var marker = new google.maps.Marker({
+				    	position: myLatLng,
+				    	map: map,
+				    	title: 'Hello World!'
+				    });
 
-				marker.setMap(map);
+					marker.setMap(map);
 
-				$.each(data.results, function(key, value) {
-					$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "     Rating:" + value.rating+"</div>");
-					return key<3;
-				})
-			}
-
-	});
-
-	$("#backButton").click(function(){
-		$(':mobile-pagecontainer').pagecontainer('change', '#p1',{
-			transition:'slidedown',
-			changeHash:false
+					$.each(data.results, function(key, value) {
+						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+"</div>");
+						return key<3;
+					})
+				}
 
 		});
 
-		$(".pubTitles").remove();
-	});
+		$("h1").click(function(){
+			$(':mobile-pagecontainer').pagecontainer('change', '#p1',{
+				transition:'slidedown',
+				changeHash:false
 
-}); 
+			});
+
+
+		});
+
+	
+
+	}); 
+
+	$(document).on('click', '.pubTitles', function() { console.log(this);
+		$(this).next().slideToggle(); });
 
 });
