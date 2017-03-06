@@ -64,6 +64,11 @@ $(document).ready(function() {
 			    });
 
 				marker.setMap(map);
+
+				$.each(data.results, function(key, value) {
+					$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "     Rating:" + value.rating+"</div>");
+					return key<3;
+				})
 			}
 
 	});
