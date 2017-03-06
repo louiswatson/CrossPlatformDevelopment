@@ -26,6 +26,7 @@ $(document).ready(function() {
 	};
 	navigator.geolocation.getCurrentPosition(success, error, options);
 
+	
 
 	$(".difficulty").click(function() {
 		console.log("again");
@@ -48,6 +49,10 @@ $(document).ready(function() {
 			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
 			success: function(data){
 				console.log(data);
+				map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 17,
+		center: {lat: parseInt(localStorage.lat), lng: parseInt(localStorage.lng)}
+	});
 			}
  
 })
