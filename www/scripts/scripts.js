@@ -51,7 +51,7 @@ $(document).ready(function() {
 				console.log(data);
 				map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 17,
-		center: {lat: parseInt(localStorage.lat), lng: parseInt(localStorage.lng)}
+		center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
 	});
 			}
  
