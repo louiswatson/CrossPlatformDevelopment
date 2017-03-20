@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns   = "http://www.w3.org/ns/widgets"
     xmlns:gap   = "http://phonegap.com/ns/1.0"
-    id          = "com.lincoln.locationtracker"
+    id          = "com.PubGolfApp"
     versionCode = "1"
     version     = "1.0.2" >
     
@@ -66,6 +66,9 @@
     <plugin name="cordova-plugin-inappbrowser" />
     <!--<plugin name="cordova-plugin-media" />-->
     <plugin name="cordova-plugin-network-information" />
+	<plugin name="phonegap-plugin-push" source="npm">
+	<param name="SENDER_ID" value="436479437581" />
+	</plugin>
     <!-- <plugin name="cordova-plugin-splashscreen" /> -->
 	<!--<plugin name="phonegap-plugin-push" />-->
 	
