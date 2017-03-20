@@ -53,6 +53,7 @@ data.title, // title
 'Ok' // buttonName
 );
 });
+}
 
 
 $(document).ready(function() {
