@@ -87,12 +87,27 @@ $(document).ready(function() {
 	
 
 
-	$(".difficulty").click(function() {
-		console.log("again");
-		
+	$(".difficulty").click(function() {	
 		$("#golfballtext").css("display", "inline");
-		$(".difficulty").css("opacity", 0.5);
+		//$("#golfballtext").slideUp(200);
+		
+		//$(".difficulty").css("opacity", 0.8);
+		$(".difficulty").css("background", "white");
+		$(".difficulty").css("color", "#131313");
+
 		$(this).css("opacity", 1);
+		$(this).css("color", "white");
+
+		if($(this).text() == "Amateur"){
+			$(this).css("background", "green");
+		}
+		if($(this).text() == "Semi-Pro"){
+			$(this).css("background", "orange");
+		}
+		if($(this).text() == "Pro"){
+			$(this).css("background", "red");
+		}
+		
 	});
 
 	$("#golfballtext").click(function() {
@@ -111,7 +126,7 @@ $(document).ready(function() {
 					console.log(data);
 					
 					map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 17,
+						zoom: 16,
 						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
 						gestureHandling: 'greedy'
 					});
@@ -121,25 +136,33 @@ $(document).ready(function() {
 					var marker = new google.maps.Marker({
 				    	position: myLatLng,
 				    	map: map,
-				    	title: 'Hello World!'
+				    	icon: 'images/person.png'
 			});
 
 					marker.setMap(map);
 
 					$.each(data.results, function(key, value) {
-						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <div place_id='"+value.place_id+ "' class='pubAttr'>test</div></div>");
+						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <div place_id='"+value.place_id+ "' class='pubAttr'>test</div><i  id='arrows' class='material-icons'>keyboard_arrow_right</i></div>");
+						
+							var marker = new google.maps.Marker({
+				    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
+				    		map: map,
+				    		icon: 'images/drinkMap.png'
+
+			});
+
+					marker.setMap(map);
+
+
+
+
 						return key<3;
 					})
 				}
 
 		});
 
-		$("h1").click(function(){
-			$(':mobile-pagecontainer').pagecontainer('change', '#p1',{
-				transition:'slidedown',
-				changeHash:false
-
-			});
+		
 
 
 		});
@@ -170,4 +193,27 @@ $(document).ready(function() {
 	$(document).on('click', '.pubAttr', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
 	});
-});
+
+
+$("#titlem8").click(function() {
+
+					
+					map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 10,
+						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
+						gestureHandling: 'greedy'
+					});
+
+					var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+					
+					var marker = new google.maps.Marker({
+				    	position: myLatLng,
+				    	map: map,
+				    	icon: 'images/person.png'
+			});
+
+					marker.setMap(map);
+
+			
+
+			});
