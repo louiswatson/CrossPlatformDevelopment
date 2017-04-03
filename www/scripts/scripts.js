@@ -111,8 +111,9 @@ $(document).ready(function() {
 					console.log(data);
 					
 					map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 12,
-						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)}
+						zoom: 17,
+						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
+						gestureHandling: 'greedy'
 					});
 
 					var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
@@ -121,7 +122,7 @@ $(document).ready(function() {
 				    	position: myLatLng,
 				    	map: map,
 				    	title: 'Hello World!'
-				    });
+			});
 
 					marker.setMap(map);
 
