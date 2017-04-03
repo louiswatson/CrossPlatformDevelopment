@@ -89,6 +89,9 @@ $(document).ready(function() {
 
 	$(".difficulty").click(function() {	
 		$("#golfFlagImage").css("display", "inline");
+		//$("#golfball").removeClass('box_rotate box_transition');
+		$(".golfball").toggleClass('box_rotate');
+		//$("#golfball").toggleClass('box_rotate2 box_transition2');
 		//$("#golfballtext").slideUp(200);
 		
 		//$(".difficulty").css("opacity", 0.8);
