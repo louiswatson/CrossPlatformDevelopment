@@ -88,7 +88,7 @@ $(document).ready(function() {
 
 
 	$(".difficulty").click(function() {	
-		$("#golfballtext").css("display", "inline");
+		$("#golfFlagImage").css("display", "inline");
 		//$("#golfballtext").slideUp(200);
 		
 		//$(".difficulty").css("opacity", 0.8);
