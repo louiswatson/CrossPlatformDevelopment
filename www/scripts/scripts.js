@@ -41,16 +41,16 @@ localStorage.setItem('registrationId', data.registrationId);
 // Post registrationId to your app server as the value has changed
 }
 });
-push.on('error', function(e) {
-console.log("push error = " + e.message);
+		push.on('error', function(e) {
+		console.log("push error = " + e.message);
 });
-push.on('notification', function(data) {
-console.log('notification event');
-navigator.notification.alert(
-data.message, // message
-null, // callback
-data.title, // title
-'Ok' // buttonName
+		push.on('notification', function(data) {
+		console.log('notification event');
+		navigator.notification.alert(
+		data.message, // message
+		null, // callback
+		data.title, // title
+		'Ok' // buttonName
 );
 });
 }
@@ -113,65 +113,70 @@ $(document).ready(function() {
 
 
 	$("#golfballtext").click(function() {
-			$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
-				transition:'slidedown',
-				changeHash:false
-			});
-
+		
+		$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
+			transition:'slidedown',
+			changeHash:false
+		});
 
 		$(".pubTitles").remove();
-			$.ajax({
-				type: "GET",
-				crossDomain :true,
-				dataType :"json",
-				url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
-				success: function(data){
-					console.log(data);
+
+		$.ajax({
+			type: "GET",
+			crossDomain :true,
+			dataType :"json",
+			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
+			success: function(data){
+				console.log(data);
+				
+				map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 16,
+					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
+					gestureHandling: 'greedy'
+				});
+
+				var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+				
+				marker = new google.maps.Marker({
+			    	position: myLatLng,
+			    	map: map,
+			    	icon: 'images/person.png'
+				});
+
+				marker.setMap(map);
+				markers = {};
+				$.each(data.results, function(key, value) {
 					
-					map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 16,
-						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
-						gestureHandling: 'greedy'
-					});
+					openBox = $('#open');
 
-					var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+					if(value.opening_hours){
+						console.log(value.open_now);
+						if(value.opening_hours.open_now == true){
+							open = "Open";
+						} else {
+							open = "Closed";
+						}
+					} else {
+						open = "Unavailable";
+					}
+
+					$('#pubList').append("<div class='pubTitles' id='" + key + "'>" + value.name + " </div><div class='pubInfo'>" + value.rating+ " <span id='open'>"+ open +"</span> " + value.types[+"0"]+" <i  place_id='"+value.place_id+ "' class='material-icons arrows'>keyboard_arrow_right</i></div></div>");
 					
-					var marker = new google.maps.Marker({
-				    	position: myLatLng,
-				    	map: map,
-				    	icon: 'images/person.png'
-			});
+					localStorage.setItem("publat"+key, value.geometry.location.lat);
+					localStorage.setItem("publng"+key, value.geometry.location.lng);
 
-					marker.setMap(map);
+			 		markers["marker"+key] = new google.maps.Marker({
+			    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
+			    		map: map,
+			    		icon: 'images/flag.png'
+		    		});
 
-					$.each(data.results, function(key, value) {
-						$('#pubList').append("<div class='pubTitles' id='" + key + "'>" + value.name + " </div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <i  place_id='"+value.place_id+ "' class='material-icons arrows'>keyboard_arrow_right</i></div></div>");
-							
-							localStorage.setItem("publat"+key, value.geometry.location.lat);
-							localStorage.setItem("publng"+key, value.geometry.location.lng);
-
-							var marker = new google.maps.Marker({
-				    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
-				    		map: map,
-				    		icon: 'images/flag.png'
-
-			});
-
-					marker.setMap(map);
+					markers["marker"+key].setMap(map);
 					return key<3;
-					})
-				}
-
+				})
+			}
 		});
-
-		
-
-
-		});
-
-	
-
-	}); 
+	});
 
 	$(document).on('click', '.pubTitles', function() {
 
@@ -192,6 +197,12 @@ $(document).ready(function() {
 
 		map.setCenter({lat: parseFloat(localStorage.getItem("publat"+pubID)), lng: parseFloat(localStorage.getItem("publng"+pubID))});
 		map.setZoom(18);
+
+		$.each(markers, function(key, value) {
+			value.setAnimation(google.maps.Animation.DROP);
+		})
+		
+		markers["marker"+pubID].setAnimation(google.maps.Animation.BOUNCE);	
 
 		if($info.hasClass("open")) {
 			$('.pubInfo').slideUp();
@@ -216,29 +227,4 @@ $(document).ready(function() {
 			});
 
 	});
-
-
-$("#titlem8").click(function() {
-
-					
-					map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 10,
-						center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
-						gestureHandling: 'greedy'
-					});
-
-					var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
-					
-					var marker = new google.maps.Marker({
-				    	position: myLatLng,
-				    	map: map,
-				    	icon: 'images/person.png'
-			});
-
-					marker.setMap(map);
-
-			
-
 });
-
-
