@@ -147,7 +147,7 @@ $(document).ready(function() {
 							var marker = new google.maps.Marker({
 				    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
 				    		map: map,
-				    		icon: 'images/drinkMap.png'
+				    		icon: 'images/flag.png'
 
 			});
 
