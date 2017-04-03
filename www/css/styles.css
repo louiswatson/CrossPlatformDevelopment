@@ -95,5 +95,6 @@ h2 {
 
 .arrows{
 	float: right;
-	size: 2em;
+	font-size: 0.4em;
+	line-height: 0em;
 }

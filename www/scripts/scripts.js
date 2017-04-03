@@ -110,11 +110,14 @@ $(document).ready(function() {
 		
 	});
 
+
+
 	$("#golfballtext").click(function() {
 			$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
 				transition:'slidedown',
 				changeHash:false
 			});
+
 
 		$(".pubTitles").remove();
 			$.ajax({
@@ -142,8 +145,11 @@ $(document).ready(function() {
 					marker.setMap(map);
 
 					$.each(data.results, function(key, value) {
-						$('#pubList').append("<div class='pubTitles' id='title" + key + "'>" + value.name + "</div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <div place_id='"+value.place_id+ "' class='pubAttr'>test</div><i  id='arrows' class='material-icons'>keyboard_arrow_right</i></div>");
-						
+						$('#pubList').append("<div class='pubTitles' id='" + key + "'>" + value.name + " </div><div class='pubInfo'>" + value.rating+ value.vicinity+ value.types[+"0"]+" <i  place_id='"+value.place_id+ "' class='material-icons arrows'>keyboard_arrow_right</i></div></div>");
+							
+							localStorage.setItem("publat"+key, value.geometry.location.lat);
+							localStorage.setItem("publng"+key, value.geometry.location.lng);
+
 							var marker = new google.maps.Marker({
 				    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
 				    		map: map,
@@ -152,11 +158,7 @@ $(document).ready(function() {
 			});
 
 					marker.setMap(map);
-
-
-
-
-						return key<3;
+					return key<3;
 					})
 				}
 
@@ -180,6 +182,17 @@ $(document).ready(function() {
 
 		// $info.addClass("open");
 
+		var pubID = $(this).attr("id");
+		// var pubLng = "publat" + $(this).attr("id");
+
+		// var pubLat = localStorage.pub+pubID+lat;
+		// var pubLng = localStorage.pub+pubID+lng;
+
+		//console.log(localStorage.getItem("publng"+));
+
+		map.setCenter({lat: parseFloat(localStorage.getItem("publat"+pubID)), lng: parseFloat(localStorage.getItem("publng"+pubID))});
+		map.setZoom(18);
+
 		if($info.hasClass("open")) {
 			$('.pubInfo').slideUp();
 			$('.pubInfo').removeClass("open");
@@ -192,6 +205,16 @@ $(document).ready(function() {
 
 	$(document).on('click', '.pubAttr', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
+	});
+
+	$(document).on('click', '.arrows', function() { 
+		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
+		console.log("TEST");
+			$(':mobile-pagecontainer').pagecontainer('change', '#p3',{
+				transition:'slidedown',
+				changeHash:false
+			});
+
 	});
 
 
@@ -216,4 +239,6 @@ $("#titlem8").click(function() {
 
 			
 
-			});
+});
+
+
