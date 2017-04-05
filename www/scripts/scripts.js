@@ -169,7 +169,7 @@ $(document).ready(function() {
 								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
 								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
 								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
-								"<div class='infoDiv' id='buttonDiv'><span>Go Here</span><i class='material-icons rating'>keyboard_arrow_right</i></div></div>" + 
+								"<div class='infoDiv' place_id='" + value.place_id + "' id='buttonDiv'><span>Go Here</span><i class='material-icons rating'>keyboard_arrow_right</i></div></div>" + 
 							"</div>" + 
 						"</div>"
 					);
@@ -236,15 +236,32 @@ $(document).ready(function() {
 
 	$(document).on('click', '.pubAttr', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
+
+
 	});
 
 	$(document).on('click', '#buttonDiv', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
+
+
+
 		console.log("TEST");
 			$(':mobile-pagecontainer').pagecontainer('change', '#p3',{
 				transition:'slidedown',
 				changeHash:false
 			});
+
+			$.ajax({
+			type: "GET",
+			crossDomain :true,
+			dataType :"json",
+			url: "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + localStorage.selectedPub + "&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
+			success: function(data){
+				console.log(data);
+				$('#hello').text(data.result.name);
+				$('#websiteInfo').text(data.result.website)
+			}
+		});
 
 	});
 });

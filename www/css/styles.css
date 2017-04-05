@@ -120,9 +120,6 @@ h2 {
 	font-size: 2em;
 
 }
-.rating{
-
-}
 
 .infoDiv {
 	line-height: 2em;
@@ -174,4 +171,8 @@ h2 {
      -moz-transition: all 1s ease-out;  /* Firefox 4-15 */
        -o-transition: all 1s ease-out;  /* Opera 10.50–12.00 */
           transition: all 1s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
+}
+
+#websiteInfo{
+	font-size: 1.5em;
 }
