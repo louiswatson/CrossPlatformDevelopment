@@ -57,6 +57,7 @@ function setupPush() {
 
 
 $(document).ready(function() {
+
 	console.log("hello");
 
 	var options = {
@@ -243,8 +244,6 @@ $(document).ready(function() {
 	$(document).on('click', '#buttonDiv', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
 
-
-
 		console.log("TEST");
 			$(':mobile-pagecontainer').pagecontainer('change', '#p3',{
 				transition:'slidedown',
@@ -259,9 +258,18 @@ $(document).ready(function() {
 			success: function(data){
 				console.log(data);
 				$('#hello').text(data.result.name);
-				$('#websiteInfo').text(data.result.website)
+				$('#addressInfo').html(data.result.adr_address);
 			}
 		});
 
 	});
+
+	$('#beerImages').click(function() {
+
+		$( "#beerFill" ).animate({
+				height: "0%"
+			}, 2000, function() {
+    // Animation complete.
+  		});
+	})
 });

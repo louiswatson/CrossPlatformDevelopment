@@ -173,6 +173,50 @@ h2 {
           transition: all 1s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.50+ */
 }
 
-#websiteInfo{
-	font-size: 1.5em;
+
+#addressInfo{
+	font-size: 1.2em;
+	font-family: 'Oswald', cursive;
+	color: black;
+	text-align: center;
+	padding-bottom: 0em;
+	margin: 0em;
+	border-bottom: 1px solid black;
+}
+
+#addressInfo span{
+	clear: left;
+	display: inline;
+	font-size: 1.2em;
+	font-family: 'Oswald', cursive;
+	text-align: center;
+	padding: 0em;
+	margin: 0em;
+	
+}
+
+#beerImages {
+	width: 10em;
+	height: 10em;
+	position: relative;
+	padding-top: 1em;
+	margin-left: 8.7em;
+	margin-top: 5em;
+}
+
+#beerFill {
+	position: absolute;
+	background: green;
+	height: 100%;
+	width: 100%;
+}
+
+#beerColour img {
+	height: 10em;
+	position: absolute;
+}
+
+#beerBw img {
+	height: 10em;
+	position: absolute;
 }
