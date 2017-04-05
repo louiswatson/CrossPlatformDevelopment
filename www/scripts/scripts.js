@@ -169,7 +169,7 @@ $(document).ready(function() {
 								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
 								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
 								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
-								"<div class='infoDiv' id='buttonDiv'><img width=80px src='images/arrow1.png' place_id='" + value.place_id + "'</img></div>" + 
+								"<div class='infoDiv' id='buttonDiv'><span>Go Here</span><i class='material-icons rating'>keyboard_arrow_right</i></div></div>" + 
 							"</div>" + 
 						"</div>"
 					);
@@ -193,6 +193,14 @@ $(document).ready(function() {
 	$(document).on('click', '.pubTitles', function() {
 
 		var $info = $(this).next();
+
+		if($info.children("#openDiv").text() == "Closed"){
+			$info.children("#openDiv").css({"background" : "red"});
+		}
+
+		if($info.children("#openDiv").text() == "Unavailable"){
+			$info.children("#openDiv").css({"background" : "orange"});
+		}
 	
 		$('.pubInfo').slideUp();
 		// $('.pubInfo').removeClass("open");
