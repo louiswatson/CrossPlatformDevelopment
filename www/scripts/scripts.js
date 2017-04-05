@@ -166,10 +166,10 @@ $(document).ready(function() {
 					$('#pubList').append(
 						"<div class='pubTitles' id='" + key + "'>" + value.name + " </div>" +
 						"<div class='pubInfo'>" + 
-								value.rating + "<i class='material-icons rating'>grade</i>" +
-								"<div id='open'>"+ open +"</span>" + 
-								value.types["0"] + 
-								"<i  place_id='" + value.place_id + "' class='material-icons arrows'>keyboard_arrow_right</i>" + 
+								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
+								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
+								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
+								"<div class='infoDiv' id='buttonDiv'><i  place_id='" + value.place_id + "' class='material-icons arrows'>keyboard_arrow_right</i></div>" + 
 							"</div>" + 
 						"</div>"
 					);
@@ -230,7 +230,7 @@ $(document).ready(function() {
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
 	});
 
-	$(document).on('click', '.arrows', function() { 
+	$(document).on('click', '#buttonDiv', function() { 
 		localStorage.setItem("selectedPub", ($(this).attr("place_id")));
 		console.log("TEST");
 			$(':mobile-pagecontainer').pagecontainer('change', '#p3',{
