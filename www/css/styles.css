@@ -33,12 +33,12 @@ h2 {
 }
 
 .golfball{
-	height: 12em;
+	bottom: 1em;
+	width: 40%;
 	margin-left: 50%;
-	left: -6em;
+	left: -20%;
 	overflow: hidden;
 	position: absolute;
-	bottom: 1em;
     -webkit-transition: all 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
     -moz-transition: all 1s ease-out;  /* Firefox 4-15 */
     -o-transition: all 1s ease-out;  /* Opera 10.50–12.00 */
@@ -46,7 +46,7 @@ h2 {
 }
 
 #golfballimage{
-	width: 12em;
+	width: 100%;
 	display: none;
 }
 #golfFlagImage{
@@ -200,8 +200,9 @@ h2 {
 	height: 10em;
 	position: relative;
 	padding-top: 1em;
-	margin-left: 8.9em;
+	margin-left: 50%;
 	margin-top: 5em;
+	left: -5em;
 }
 
 #beerFill {
