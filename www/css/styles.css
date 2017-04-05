@@ -104,10 +104,14 @@ h2 {
 
 .arrows{
 	float: right;
-	font-size: 0.4em;
+	font-size: 0.3em;
 	line-height: 0em;
 }
 
+#buttonDiv i {
+	font-size: 2em;
+
+}
 .rating{
 
 }
@@ -115,10 +119,11 @@ h2 {
 .infoDiv {
 	float: left;
 	width: 25%;
+	padding-bottom: 0.55em;
 }
 
 #buttonDiv {
-	background: #fff;
+	;
 }
 
 .box_rotate {

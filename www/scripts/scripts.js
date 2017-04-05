@@ -94,7 +94,7 @@ $(document).ready(function() {
 		//$("#golfball").toggleClass('box_rotate2 box_transition2');
 		//$("#golfballtext").slideUp(200);
 		
-		$(".difficulty").css("opacity", 0.8);
+		//$(".difficulty").css("opacity", 0.8);
 		$(".difficulty").css("background", "white");
 		$(".difficulty").css("color", "#131313");
 
@@ -169,7 +169,7 @@ $(document).ready(function() {
 								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
 								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
 								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
-								"<div class='infoDiv' id='buttonDiv'><i  place_id='" + value.place_id + "' class='material-icons arrows'>keyboard_arrow_right</i></div>" + 
+								"<div class='infoDiv' id='buttonDiv'><img width=80px src='images/arrow1.png' place_id='" + value.place_id + "'</img></div>" + 
 							"</div>" + 
 						"</div>"
 					);
