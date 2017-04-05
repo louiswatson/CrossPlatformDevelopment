@@ -1,43 +1,43 @@
 document.addEventListener("deviceready", setupPush, false);
 function setupPush() {
-var push = PushNotification.init({
-"android": {
-"senderID": "436479437581"
+	var push = PushNotification.init({
+	"android": {
+	"senderID": "436479437581"
 },
-"ios": {
-"sound": true,
-"alert": true,
-"badge": true,
-"categories": {
-"invite": {
-"yes": {
-"callback": "app.accept", "title": "Accept", "foreground": true, "destructive": false
+	"ios": {
+	"sound": true,
+	"alert": true,
+	"badge": true,
+	"categories": {
+	"invite": {
+	"yes": {
+	"callback": "app.accept", "title": "Accept", "foreground": true, "destructive": false
 },
-"no": {
-"callback": "app.reject", "title": "Reject", "foreground": true, "destructive": false
+	"no": {
+	"callback": "app.reject", "title": "Reject", "foreground": true, "destructive": false
 },
-"maybe": {
-"callback": "app.maybe", "title": "Maybe", "foreground": true, "destructive": false
+	"maybe": {
+	"callback": "app.maybe", "title": "Maybe", "foreground": true, "destructive": false
 }
 },
-"delete": {
-"yes": {
-"callback": "app.doDelete", "title": "Delete", "foreground": true, "destructive": true
+	"delete": {
+	"yes": {
+	"callback": "app.doDelete", "title": "Delete", "foreground": true, "destructive": true
 },
-"no": {
-"callback": "app.cancel", "title": "Cancel", "foreground": true, "destructive": false
+	"no": {
+	"callback": "app.cancel", "title": "Cancel", "foreground": true, "destructive": false
 }
 }
 }
 },
-"windows": {}
+	"windows": {}
 });
-push.on('registration', function(data) {
-console.log("registration event: " + data.registrationId);
-var oldRegId = localStorage.getItem('registrationId');
-if (oldRegId !== data.registrationId) {
+	push.on('registration', function(data) {
+	console.log("registration event: " + data.registrationId);
+	var oldRegId = localStorage.getItem('registrationId');
+	if (oldRegId !== data.registrationId) {
 // Save new registration ID
-localStorage.setItem('registrationId', data.registrationId);
+	localStorage.setItem('registrationId', data.registrationId);
 // Post registrationId to your app server as the value has changed
 }
 });
@@ -88,13 +88,13 @@ $(document).ready(function() {
 
 
 	$(".difficulty").click(function() {	
-		$("#golfFlagImage").css("display", "inline");
+		$("#golfballimage").css("display", "inline");
 		//$("#golfball").removeClass('box_rotate box_transition');
 		$(".golfball").toggleClass('box_rotate');
 		//$("#golfball").toggleClass('box_rotate2 box_transition2');
 		//$("#golfballtext").slideUp(200);
 		
-		//$(".difficulty").css("opacity", 0.8);
+		$(".difficulty").css("opacity", 0.8);
 		$(".difficulty").css("background", "white");
 		$(".difficulty").css("color", "#131313");
 
@@ -115,7 +115,7 @@ $(document).ready(function() {
 
 
 
-	$("#golfballtext").click(function() {
+	$("#golfballimage").click(function() {
 		
 		$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
 			transition:'slidedown',
@@ -163,7 +163,16 @@ $(document).ready(function() {
 						open = "Unavailable";
 					}
 
-					$('#pubList').append("<div class='pubTitles' id='" + key + "'>" + value.name + " </div><div class='pubInfo'>" + value.rating+ " <span id='open'>"+ open +"</span> " + value.types[+"0"]+" <i  place_id='"+value.place_id+ "' class='material-icons arrows'>keyboard_arrow_right</i></div></div>");
+					$('#pubList').append(
+						"<div class='pubTitles' id='" + key + "'>" + value.name + " </div>" +
+						"<div class='pubInfo'>" + 
+								value.rating + "<i class='material-icons rating'>grade</i>" +
+								"<div id='open'>"+ open +"</span>" + 
+								value.types["0"] + 
+								"<i  place_id='" + value.place_id + "' class='material-icons arrows'>keyboard_arrow_right</i>" + 
+							"</div>" + 
+						"</div>"
+					);
 					
 					localStorage.setItem("publat"+key, value.geometry.location.lat);
 					localStorage.setItem("publng"+key, value.geometry.location.lng);

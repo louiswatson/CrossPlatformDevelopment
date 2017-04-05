@@ -39,22 +39,15 @@ h2 {
 	overflow: hidden;
 	position: absolute;
 	bottom: 1em;
-
-
-
-
-           -webkit-transition: all 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
-     -moz-transition: all 1s ease-out;  /* Firefox 4-15 */
-       -o-transition: all 1s ease-out;  /* Opera 10.50–12.00 */
-          transition: all 1s ease-out;
-	
+    -webkit-transition: all 1s ease-out;  /* Chrome 1-25, Safari 3.2+ */
+    -moz-transition: all 1s ease-out;  /* Firefox 4-15 */
+    -o-transition: all 1s ease-out;  /* Opera 10.50–12.00 */
+    transition: all 1s ease-out;
 }
 
-#golfballtext{
-	
-}
 #golfballimage{
 	width: 12em;
+	display: none;
 }
 #golfFlagImage{
 	width: 5em;
