@@ -267,6 +267,12 @@ $(document).ready(function() {
 	$('#beerImages').click(function() {
 
 		$( "#beerFill" ).animate({
+				height: "100%"
+			}, 500, function() {
+    // Animation complete.
+  		});
+
+		$( "#beerFill" ).animate({
 				height: "0%"
 			}, 2000, function() {
     // Animation complete.
