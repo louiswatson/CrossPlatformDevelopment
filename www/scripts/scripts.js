@@ -87,8 +87,12 @@ $(document).ready(function() {
 
 	
 
-
 	$(".difficulty").click(function() {	
+
+		var drinks1 = ["JagerBomb", "Apple Sourz", "VK", "Sambuca", "Gin and Tonic", "Single Vodka Mixer", "Half a Pint of Beer/Cider"];
+		var drinks2 = ["JagerBomb", "2 Apple Sourz", "Pint of Beer/Cider)", "Double Vodka Mixer", "VK and a shot"];
+		var drinks3 = ["2 shots of Jager", "2 Apple Sourz", "2 shots of Sambuca", "Treble Vodka Mixer", "2 Sambuca shots", "Down a Pint of Beer", "Tequila Slammer"];
+
 		$("#golfballimage").css("display", "inline");
 		//$("#golfball").removeClass('box_rotate box_transition');
 		$(".golfball").toggleClass('box_rotate');
@@ -104,12 +108,15 @@ $(document).ready(function() {
 
 		if($(this).text() == "Amateur"){
 			$(this).css("background", "green");
+			localStorage.setItem("difficultyMultiplier", drinks1);
 		}
 		if($(this).text() == "Semi-Pro"){
 			$(this).css("background", "orange");
+			localStorage.setItem("difficultyMultiplier", drinks2);
 		}
 		if($(this).text() == "Pro"){
 			$(this).css("background", "red");
+			localStorage.setItem("difficultyMultiplier", drinks3);
 		}
 		
 	});
