@@ -90,8 +90,8 @@ $(document).ready(function() {
 	$(".difficulty").click(function() {	
 
 		var drinks1 = ["JagerBomb", "Apple Sourz", "VK", "Sambuca", "Gin and Tonic", "Single Vodka Mixer", "Half a Pint of Beer/Cider"];
-		var drinks2 = ["JagerBomb", "2 Apple Sourz", "Pint of Beer/Cider)", "Double Vodka Mixer", "VK and a shot"];
-		var drinks3 = ["2 shots of Jager", "2 Apple Sourz", "2 shots of Sambuca", "Treble Vodka Mixer", "2 Sambuca shots", "Down a Pint of Beer", "Tequila Slammer"];
+		var drinks2 = ["JagerBomb", "2 Apple Sourz", "Pint of Beer/Cider)", "Double Vodka Mixer", "VK and a shot", "Shot of Sambuca", "Gin Lime and Soda"];
+		var drinks3 = ["2 shots of Jager", "4 Apple Sourz", "2 shots of Sambuca", "Treble Vodka Mixer", "2 Sambuca shots", "Down a Pint of Beer", "Tequila Slammer"];
 
 		$("#golfballimage").css("display", "inline");
 		//$("#golfball").removeClass('box_rotate box_transition');
