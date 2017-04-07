@@ -281,13 +281,13 @@ $(document).ready(function() {
 
 		$( "#beerFill" ).animate({
 				height: "100%"
-			}, 500, function() {
+			}, 750, function() {
     // Animation complete.
   		});
 
 		$( "#beerFill" ).animate({
 				height: "0%"
-			}, 2000, function() {
+			}, 2500, function() {
     // Animation complete.
   		});
 	})
