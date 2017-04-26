@@ -89,9 +89,9 @@ $(document).ready(function() {
 
 	$(".difficulty").click(function() {	
 
-		var drinks1 = ["JagerBomb", "Apple Sourz", "VK", "Sambuca", "Gin and Tonic", "Single Vodka Mixer", "Half a Pint of Beer/Cider"];
+		var drinks1 = ["JagerBomb", "Apple Sourz", "VK", "Sambuca", "Gin and Tonic", "Single Vodka Mixer", "Pint of Beer"];
 		var drinks2 = ["JagerBomb", "Apple Sourz x2", "Pint of Beer/Cider", "Double Vodka Mixer", "VK and a shot", "Shot of Sambuca", "Gin Lime and Soda"];
-		var drinks3 = ["Shots of Jager x2", "Apple Sourz x4", "Shots of Sambuca x2", "Treble Vodka Mixer", "Sambuca shots x2", "Down a Pint of Beer", "Tequila Slammer"];
+		var drinks3 = ["Shots of Jager x2", "Apple Sourz x4", "Shots of Sambuca x2", "Treble Vodka Mixer", "Sambuca shots x2", "Down a Pint", "Tequila Slammer"];
 
 		$("#golfballimage").css("display", "inline");
 		//$("#golfball").removeClass('box_rotate box_transition');
@@ -121,6 +121,14 @@ $(document).ready(function() {
 		
 	});
 
+	$("#NextPub").click(function() {
+		
+		$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
+			transition:'slidedown',
+			changeHash:false
+		});
+	});
+
 
 
 	$("#golfballimage").click(function() {
@@ -129,6 +137,8 @@ $(document).ready(function() {
 			transition:'slidedown',
 			changeHash:false
 		});
+
+
 
 		$(".pubTitles").remove();
 
@@ -270,6 +280,8 @@ $(document).ready(function() {
 		});
 
 	});
+	
+
 
 	$('#beerImages').click(function() {
 
@@ -283,12 +295,13 @@ $(document).ready(function() {
 				height: "100%"
 			}, 750, function() {
     // Animation complete.
-  		});
-
+  		});		
+		
 		$( "#beerFill" ).animate({
 				height: "0%"
 			}, 2500, function() {
     // Animation complete.
   		});
-	})
+	});
 });
+
