@@ -252,6 +252,7 @@ $(document).ready(function() {
 
 function get_pubs() {
 	$(".pubTitles").remove();
+	$(".pubInfo").remove();
 
 		$.ajax({
 			type: "GET",
