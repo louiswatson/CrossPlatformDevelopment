@@ -85,6 +85,18 @@ $(document).ready(function() {
 	};
 	navigator.geolocation.getCurrentPosition(success, error, options);
 
+	$(":mobile-pagecontainer").on("pagecontainerchange", function(event, ui){
+
+		map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 16,
+					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
+					gestureHandling: 'greedy'
+				}); 
+
+		get_pubs();
+
+	});
+
 	
 
 	$(".difficulty").click(function() {	
@@ -136,75 +148,6 @@ $(document).ready(function() {
 		$(':mobile-pagecontainer').pagecontainer('change', '#p2',{
 			transition:'slidedown',
 			changeHash:false
-		});
-
-
-
-		$(".pubTitles").remove();
-
-		$.ajax({
-			type: "GET",
-			crossDomain :true,
-			dataType :"json",
-			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
-			success: function(data){
-				console.log(data);
-				
-				map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 16,
-					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
-					gestureHandling: 'greedy'
-				});
-
-				var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
-				
-				marker = new google.maps.Marker({
-			    	position: myLatLng,
-			    	map: map,
-			    	icon: 'images/person.png'
-				});
-
-				marker.setMap(map);
-				markers = {};
-				$.each(data.results, function(key, value) {
-					
-					openBox = $('#open');
-
-					if(value.opening_hours){
-						console.log(value.open_now);
-						if(value.opening_hours.open_now == true){
-							open = "Open";
-						} else {
-							open = "Closed";
-						}
-					} else {
-						open = "Unavailable";
-					}
-
-					$('#pubList').append(
-						"<div class='pubTitles' id='" + key + "'>" + value.name + " </div>" +
-						"<div class='pubInfo'>" + 
-								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
-								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
-								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
-								"<div class='infoDiv' place_id='" + value.place_id + "' id='buttonDiv'><span>Go Here</span><i class='material-icons rating'>keyboard_arrow_right</i></div></div>" + 
-							"</div>" + 
-						"</div>"
-					);
-					
-					localStorage.setItem("publat"+key, value.geometry.location.lat);
-					localStorage.setItem("publng"+key, value.geometry.location.lng);
-
-			 		markers["marker"+key] = new google.maps.Marker({
-			    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
-			    		map: map,
-			    		icon: 'images/flag.png'
-		    		});
-
-					markers["marker"+key].setMap(map);
-					return key<3;
-				})
-			}
 		});
 	});
 
@@ -303,5 +246,75 @@ $(document).ready(function() {
     // Animation complete.
   		});
 	});
+
+
 });
 
+function get_pubs() {
+	$(".pubTitles").remove();
+
+		$.ajax({
+			type: "GET",
+			crossDomain :true,
+			dataType :"json",
+			url: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+localStorage.lat+","+localStorage.lng+"&radius=500&type=bar&key=AIzaSyDQpJbU4Rosens_809DjMOU6O9L74a7eFI",
+			success: function(data){
+				console.log(data);
+				
+				map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 16,
+					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
+					gestureHandling: 'greedy'
+				});
+
+				var myLatLng = new google.maps.LatLng(localStorage.lat,localStorage.lng);
+				
+				marker = new google.maps.Marker({
+			    	position: myLatLng,
+			    	map: map,
+			    	icon: 'images/person.png'
+				});
+
+				marker.setMap(map);
+				markers = {};
+				$.each(data.results, function(key, value) {
+					
+					openBox = $('#open');
+
+					if(value.opening_hours){
+						console.log(value.open_now);
+						if(value.opening_hours.open_now == true){
+							open = "Open";
+						} else {
+							open = "Closed";
+						}
+					} else {
+						open = "Unavailable";
+					}
+
+					$('#pubList').append(
+						"<div class='pubTitles' id='" + key + "'>" + value.name + " </div>" +
+						"<div class='pubInfo'>" + 
+								"<div class='infoDiv' id='ratingDiv'>" + value.rating + "<i class='material-icons rating'>grade</i></div>" +
+								"<div class='infoDiv' id='openDiv'>"+ open +"</div>" + 
+								"<div class='infoDiv' id='typeDiv'>"+ value.types["0"] +"</div>" + 
+								"<div class='infoDiv' place_id='" + value.place_id + "' id='buttonDiv'><span>Go Here</span><i class='material-icons rating'>keyboard_arrow_right</i></div></div>" + 
+							"</div>" + 
+						"</div>"
+					);
+					
+					localStorage.setItem("publat"+key, value.geometry.location.lat);
+					localStorage.setItem("publng"+key, value.geometry.location.lng);
+
+			 		markers["marker"+key] = new google.maps.Marker({
+			    		position: {lat: value.geometry.location.lat, lng: value.geometry.location.lng},
+			    		map: map,
+			    		icon: 'images/flag.png'
+		    		});
+
+					markers["marker"+key].setMap(map);
+					return key<3;
+				})
+			}
+		});
+}
