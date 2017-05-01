@@ -178,7 +178,7 @@ $(document).ready(function() {
 		//console.log(localStorage.getItem("publng"+));
 
 		map.setCenter({lat: parseFloat(localStorage.getItem("publat"+pubID)), lng: parseFloat(localStorage.getItem("publng"+pubID))});
-		map.setZoom(18);
+		map.setZoom(15);
 
 		$.each(markers, function(key, value) {
 			value.setAnimation(google.maps.Animation.DROP);
@@ -268,7 +268,7 @@ function get_pubs(initialIndex) {
 				console.log(data);
 				
 				map = new google.maps.Map(document.getElementById('map'), {
-					zoom: 16,
+					zoom: 15,
 					center: {lat: parseFloat(localStorage.lat), lng: parseFloat(localStorage.lng)},
 					gestureHandling: 'greedy'
 				});
