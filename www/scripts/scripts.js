@@ -55,6 +55,7 @@ function setupPush() {
 });
 }
 
+initialIndex = -2;
 
 $(document).ready(function() {
 
@@ -93,7 +94,7 @@ $(document).ready(function() {
 					gestureHandling: 'greedy'
 				}); 
 
-		get_pubs();
+		get_pubs(initialIndex+=2);
 
 	});
 
@@ -250,9 +251,13 @@ $(document).ready(function() {
 
 });
 
-function get_pubs() {
+function get_pubs(initialIndex) {
 	$(".pubTitles").remove();
 	$(".pubInfo").remove();
+
+	if (initialIndex>16) {
+		initialIndex=0;
+	}
 
 		$.ajax({
 			type: "GET",
@@ -278,7 +283,12 @@ function get_pubs() {
 
 				marker.setMap(map);
 				markers = {};
+
+				
+
 				$.each(data.results, function(key, value) {
+
+					if ((key >= initialIndex) && (key <= initialIndex+3)) {
 					
 					openBox = $('#open');
 
@@ -314,7 +324,8 @@ function get_pubs() {
 		    		});
 
 					markers["marker"+key].setMap(map);
-					return key<3;
+					// return key<3;
+				}
 				})
 			}
 		});
