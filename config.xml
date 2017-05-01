@@ -55,21 +55,20 @@
 	-->
 	
     <!-- Core plugins -->
-    <!--<plugin name="cordova-plugin-camera" />
-    <plugin name="cordova-plugin-media-capture" />-->
     <plugin name="cordova-plugin-console" />
     <plugin name="cordova-plugin-device" />
     <plugin name="cordova-plugin-device-orientation" />
     <plugin name="cordova-plugin-dialogs" />
 	<plugin name="cordova-plugin-vibration" />
-    <!--<plugin name="cordova-plugin-geolocation" />-->
+    <plugin name="cordova-plugin-geolocation">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value ="Get Location"/>
+    </plugin>
     <plugin name="cordova-plugin-inappbrowser" />
     <!--<plugin name="cordova-plugin-media" />-->
     <plugin name="cordova-plugin-network-information" />
 	<plugin name="phonegap-plugin-push" source="npm">
 	<param name="SENDER_ID" value="436479437581" />
 	</plugin>
-    <!-- <plugin name="cordova-plugin-splashscreen" /> -->
 	<!--<plugin name="phonegap-plugin-push" />-->
 	
     <!-- Third party plugins -->
